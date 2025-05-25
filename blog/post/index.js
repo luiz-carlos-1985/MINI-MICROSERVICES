@@ -22,5 +22,5 @@ res.status(201).send(posts[id]);
 });
 
 app.listen(3000, () => {
-console.log('Executando CLIENTE na porta 3000')
+console.log('Executando POST na porta 3000')
 });
