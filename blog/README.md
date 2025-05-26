@@ -1,87 +1,57 @@
-# Welcome to React Router!
+# Blog Project
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+This project is a React-based blog application using React Router v7 and TypeScript.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Create posts with a title using a form on the Home page.
+- Client-side routing with React Router.
+- Form validation with inline feedback.
+- Bootstrap 5 styling for responsive and modern UI.
 
-## Getting Started
+## Setup
 
-### Installation
-
-Install the dependencies:
+1. Install dependencies:
 
 ```bash
 npm install
 ```
 
-### Development
-
-Start the development server with HMR:
+2. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+## Bootstrap Integration
 
-## Building for Production
+Bootstrap is installed via npm and imported in `app/app.css`. The styles are applied globally.
 
-Create a production build:
+## Usage
 
-```bash
-npm run build
-```
+- Navigate to the Home page to create a new post.
+- The post creation form validates the title input (required, minimum 3 characters).
+- Submit the form to see a confirmation alert.
 
-## Deployment
+## File Structure
 
-### Docker Deployment
+- `app/routes/home.tsx`: Home page component rendering the post creation form.
+- `app/src/PostCreate.tsx`: Post creation form component with validation and styling.
+- `app/root.tsx`: Main app root with global CSS imports including Bootstrap.
 
-To build and run using Docker:
+## Notes
 
-```bash
-docker build -t my-app .
+- The "CRIAR !" button has enhanced styling and cursor pointer on hover.
+- Input validation provides user-friendly error messages.
+- The project uses TypeScript with strict type checking.
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+## Testing
 
-The containerized application can be deployed to any platform that supports Docker, including:
+- Verify form input validation by submitting empty or short titles.
+- Check Bootstrap styling is applied on all pages.
+- Ensure routing works correctly and pages render as expected.
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+## Troubleshooting
 
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- If Bootstrap styles do not appear, ensure `app/app.css` is imported in `app/root.tsx`.
+- Run `npm install` to ensure all dependencies are installed.
