@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export const PostCreate: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -15,7 +16,7 @@ export const PostCreate: React.FC = () => {
     return "";
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     const validationError = validateTitle(title);
     if (validationError) {
@@ -23,7 +24,10 @@ export const PostCreate: React.FC = () => {
       setValidated(true);
       return;
     }
-    alert(`Post submitted with title: ${title}`);
+    await axios.post('http://localhost:3001/posts',{
+      title
+    });
+    alert(`Postagem realizada com o título: ${title}`);
     setTitle("");
     setError("");
     setValidated(false);
