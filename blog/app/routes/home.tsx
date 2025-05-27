@@ -1,5 +1,6 @@
 import React from 'react';
 import PostCreate from '../src/PostCreate';
+import PostList from '~/src/PostList';
 
 export function meta() {
   return [
@@ -17,6 +18,9 @@ export default function Home() {
       </header>
       <div className="card p-4 shadow-sm">
         <PostCreate />
+        <hr/>
+        <h1>POSTS</h1>
+        <PostList/>
       </div>
     </div>
   );
