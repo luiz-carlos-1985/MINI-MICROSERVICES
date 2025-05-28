@@ -17,7 +17,12 @@ interface Comment {
   content: string;
 }
 
-const PostList: React.FC = () => {
+interface PostListProps {
+  refreshKey: number;
+  onCommentCreated?: () => void;
+}
+
+const PostList: React.FC<PostListProps> = ({ refreshKey, onCommentCreated }) => {
   const [posts, setPosts] = useState<Record<string, Post>>({});
   const [commentsByPostId, setCommentsByPostId] = useState<CommentsByPostId>({});
 
@@ -41,7 +46,7 @@ const PostList: React.FC = () => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [refreshKey]);
 
   useEffect(() => {
     if (Object.keys(posts).length > 0) {
@@ -55,6 +60,9 @@ const PostList: React.FC = () => {
     if (!commentsLoaded) {
       await fetchComments();
       setCommentsLoaded(true);
+    }
+    if (onCommentCreated) {
+      onCommentCreated();
     }
   };
 
