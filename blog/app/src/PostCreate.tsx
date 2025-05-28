@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export const PostCreate: React.FC = () => {
+interface PostCreateProps {
+  onPostCreated?: () => void;
+}
+
+export const PostCreate: React.FC<PostCreateProps> = ({ onPostCreated }) => {
   const [title, setTitle] = useState("");
   const [validated, setValidated] = useState(false);
   const [error, setError] = useState("");
@@ -31,6 +35,9 @@ export const PostCreate: React.FC = () => {
     setTitle("");
     setError("");
     setValidated(false);
+    if (onPostCreated) {
+      onPostCreated();
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
