@@ -55,3 +55,7 @@ Bootstrap is installed via npm and imported in `app/app.css`. The styles are app
 
 - If Bootstrap styles do not appear, ensure `app/app.css` is imported in `app/root.tsx`.
 - Run `npm install` to ensure all dependencies are installed.
+
+## Screenshot
+
+![image](https://github.com/user-attachments/assets/b56792d6-b4ca-45b4-ab1f-23281edc6cbf)
