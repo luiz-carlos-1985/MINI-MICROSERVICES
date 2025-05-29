@@ -35,7 +35,7 @@ const PostList: React.FC<PostListProps> = ({ refreshKey, onCommentCreated }) => 
     const commentsData: CommentsByPostId = {};
     for (const postId of Object.keys(posts)) {
       try {
-        const response = await axios.get<Comment[]>(`http://localhost:2000/posts/${postId}/comments`);
+        const response = await axios.get<Comment[]>(`http://localhost:5000/posts/${postId}/comments`);
         commentsData[postId] = response.data;
       } catch (error) {
         commentsData[postId] = [];

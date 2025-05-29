@@ -22,12 +22,21 @@ app.post("/posts", async (req, res) => {
     title,
   };
 
-  await axios.post("http://localhost:2001/events", {
-    type: "POST_CREATED",
-    data: { id, title },
-  });
+  try {
+    await axios.post("http://localhost:2001/events", {
+      type: "POST_CREATED",
+      data: { id, title },
+    });
+  } catch (error) {
+    console.error("Error posting event to event bus:", error.message);
+  }
 
   res.status(201).send(posts[id]);
+});
+
+app.post('/events', (req,res) => {
+  console.log('Evento recebido em Post microservice.', req.body.type);
+  res.send({});
 });
 
 app.listen(3001, () => {

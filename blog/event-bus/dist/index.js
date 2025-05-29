@@ -12,7 +12,7 @@ app.post('/events', (req, res) => {
     const event = req.body;
     axios_1.default.post('http://localhost:3001/events', event);
     axios_1.default.post('http://localhost:3000/events', event);
-    axios_1.default.post('http://localhost:2000/events', event);
+    axios_1.default.post('http://localhost:5000/events', event);
     res.send({ status: 'OK' });
 });
 app.listen(2001, () => {

@@ -22,14 +22,23 @@ const comments = commentsByPostId[req.params.id] || [];
 comments.push({ id: commentId, content });
 commentsByPostId[req.params.id] = comments;
 
-await axios.post("http://localhost:2001/events", {
+try {
+  await axios.post("http://localhost:2001/events", {
     type: "COMMENT_CREATED",
     data: { id: commentId, content, postId: req.params.id },
   });
+} catch (error) {
+  console.error("Error posting event to event bus:", error.message);
+}
 
 res.status(201).send(comments);
 });
 
-app.listen(2000, () => {
-console.log('Executando COMMENTS na porta 2000')
+app.post('/events', (req,res) => {
+  console.log('Evento recebido em Comments microservice.', req.body.type);
+  res.send({});
+});
+
+app.listen(5000, () => {
+console.log('Executando COMMENTS na porta 5000')
 });

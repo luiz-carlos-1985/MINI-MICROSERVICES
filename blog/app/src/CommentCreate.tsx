@@ -16,7 +16,7 @@ const CommentCreate: React.FC<CommentCreateProps> = ({ postId, onCommentCreated 
       return;
     }
     try {
-      await axios.post(`http://localhost:2000/posts/${postId}/comments`, {
+      await axios.post(`http://localhost:5000/posts/${postId}/comments`, {
         content: comment,
       });
       alert("Comentário enviado com sucesso!");
